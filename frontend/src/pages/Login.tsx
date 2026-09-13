@@ -53,8 +53,8 @@ export default function Login() {
       </div>
 
       {/* Form */}
-      <div className="bg-surface-container-low p-8 sm:p-10">
-        <h2 className="font-display text-3xl font-medium">Welcome back</h2>
+      <div className="bg-surface-container-low p-5 sm:p-8 lg:p-10">
+        <h2 className="font-display text-2xl font-medium sm:text-3xl">Welcome back</h2>
         <p className="mt-1 text-[16px] text-on-surface-variant">
           Log in to manage your short links.
         </p>

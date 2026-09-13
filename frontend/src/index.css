@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* ---- Surfaces ---- */
   --color-surface: #ffffff;
@@ -75,6 +77,56 @@
   --container-max: 1280px;
 }
 
+/* ---- Dark mode (next-themes toggles `.dark` on <html>) ----
+   Tailwind v4 utilities reference these vars, so overriding them
+   re-themes every component (cards, buttons, inputs, badges) at once. */
+.dark {
+  color-scheme: dark;
+
+  --color-surface: #1b1917;
+  --color-surface-dim: #121110;
+  --color-surface-bright: #23211f;
+  --color-surface-lowest: #23211f;
+  --color-surface-low: #1e1c1a;
+  --color-surface-container: #2b2117;
+  --color-surface-high: #262422;
+  --color-surface-highest: #35322e;
+  --color-surface-variant: #262422;
+  --color-on-surface: #f5f3ee;
+  --color-on-surface-variant: #a8a29a;
+  --color-inverse-surface: #f5f3ee;
+  --color-inverse-on-surface: #1c1917;
+  --color-outline: #35322e;
+  --color-outline-variant: #44403a;
+  --color-surface-tint: #ff8c1a;
+
+  --color-primary: #ff8c1a;
+  --color-primary-container: #ff9933;
+  --color-inverse-primary: #ff9933;
+  --color-primary-fixed: #ff9933;
+  --color-primary-fixed-dim: #ff8c1a;
+
+  --color-secondary: #3d9aff;
+  --color-secondary-container: #1d4ed8;
+  --color-on-secondary-container: #dbeafe;
+  --color-secondary-fixed-dim: #3d9aff;
+
+  --color-tertiary-container: #8a6a3e;
+  --color-on-tertiary-container: #fef3e2;
+
+  --color-error: #f87171;
+  --color-error-container: #7f1d1d;
+  --color-on-error-container: #fecaca;
+
+  --color-background: #121110;
+  --color-on-background: #f5f3ee;
+
+  --shadow-md: 0 3px 8px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-primary: 0 3px 8px rgba(255, 140, 26, 0.25);
+  --shadow-primary-hover: 0 6px 16px rgba(255, 140, 26, 0.35);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -84,6 +136,9 @@ body {
   background-color: var(--color-surface-dim);
   color: var(--color-on-surface);
   -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 h1,
@@ -93,6 +148,17 @@ h4,
 .display,
 .headline {
   font-family: var(--font-display);
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 @layer components {

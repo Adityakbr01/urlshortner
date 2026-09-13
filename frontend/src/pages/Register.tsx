@@ -57,8 +57,8 @@ export default function Register() {
         </div>
       </div>
 
-      <div className="bg-surface-container-low p-8 sm:p-10">
-        <h2 className="font-display text-3xl font-medium">Create account</h2>
+      <div className="bg-surface-container-low p-5 sm:p-8 lg:p-10">
+        <h2 className="font-display text-2xl font-medium sm:text-3xl">Create account</h2>
         <p className="mt-1 text-[16px] text-on-surface-variant">
           Start shortening links in under a minute.
         </p>

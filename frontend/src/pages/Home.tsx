@@ -100,15 +100,15 @@ export default function Home() {
   const latest = shortenMutation.data;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6 sm:space-y-10">
       {/* Hero */}
-      <section className="rounded-xl border border-outline bg-surface p-8 shadow-md sm:p-12">
+      <section className="rounded-xl border border-outline bg-surface p-5 shadow-md sm:p-8 lg:p-12">
         <span className="badge">URL SHORTENER</span>
-        <h1 className="mt-4 max-w-2xl font-display text-[52px] font-light leading-[60px] tracking-tight">
+        <h1 className="mt-4 max-w-2xl font-display text-[32px] font-light leading-[40px] tracking-tight sm:text-[44px] sm:leading-[52px] lg:text-[52px] lg:leading-[60px]">
           Hey {user?.name?.split(" ")[0] ?? "there"} — shorten a link{" "}
           <span className="text-primary">in seconds.</span>
         </h1>
-        <p className="mt-3 max-w-xl text-[20px] leading-7 text-on-surface-variant">
+        <p className="mt-3 max-w-xl text-[17px] leading-6 text-on-surface-variant sm:text-[20px] sm:leading-7">
           Paste a long URL, get a clean short link, and track every click from
           one calm dashboard.
         </p>
@@ -144,7 +144,7 @@ export default function Home() {
                 href={latest.short_url}
                 target="_blank"
                 rel="noreferrer"
-                className="font-display text-lg font-semibold text-secondary hover:underline"
+                className="font-display break-all text-lg font-semibold text-secondary hover:underline"
               >
                 {latest.short_url}
               </a>
@@ -160,7 +160,7 @@ export default function Home() {
       </section>
 
       {/* Stats + list */}
-      <section className="grid gap-4 sm:grid-cols-3">
+      <section className="grid grid-cols-3 gap-2 sm:gap-4">
         {[
           { label: "Total links", value: String(links.length) },
           {
@@ -169,11 +169,11 @@ export default function Home() {
           },
           { label: "Active rate", value: links.length ? "95%" : "—" },
         ].map((s) => (
-          <div key={s.label} className="card">
-            <p className="font-display text-[12px] font-semibold uppercase tracking-[0.05em] text-on-surface-variant">
+          <div key={s.label} className="card p-3 text-center sm:p-6 sm:text-left">
+            <p className="font-display text-[11px] font-semibold uppercase tracking-[0.05em] text-on-surface-variant sm:text-[12px]">
               {s.label}
             </p>
-            <p className="mt-1 font-display text-4xl font-medium">{s.value}</p>
+            <p className="mt-1 font-display text-2xl font-medium sm:text-4xl">{s.value}</p>
           </div>
         ))}
       </section>
