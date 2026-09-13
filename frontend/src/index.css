@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* ---- Surfaces ---- */
+  --color-surface: #ffffff;
+  --color-surface-dim: #f8f7f3;
+  --color-surface-bright: #ffffff;
+  --color-surface-lowest: #f2f1ea;
+  --color-surface-low: #f8f7f3;
+  --color-surface-container: #fef1de;
+  --color-surface-high: #f2f1ea;
+  --color-surface-highest: #e2e8f0;
+  --color-surface-variant: #f2f1ea;
+  --color-on-surface: #000000;
+  --color-on-surface-variant: #696969;
+  --color-inverse-surface: #1e1e1e;
+  --color-inverse-on-surface: #ffffff;
+  --color-outline: #dedede;
+  --color-outline-variant: #d6d6d6;
+  --color-surface-tint: #ff8000;
+
+  /* ---- Brand ---- */
+  --color-primary: #ff8000;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #ff9933;
+  --color-on-primary-container: #ffffff;
+  --color-inverse-primary: #ff9933;
+  --color-primary-fixed: #ff9933;
+  --color-primary-fixed-dim: #e67300;
+  --color-on-primary-fixed: #ffffff;
+
+  --color-secondary: #0779ff;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #3d9aff;
+  --color-on-secondary-container: #ffffff;
+  --color-secondary-fixed: #3d9aff;
+  --color-secondary-fixed-dim: #0561cc;
+
+  --color-tertiary: #bd9964;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #f09819;
+  --color-on-tertiary-container: #ffffff;
+  --color-tertiary-fixed: #f09819;
+  --color-tertiary-fixed-dim: #bd9964;
+
+  --color-error: #e53e3e;
+  --color-on-error: #ffffff;
+  --color-error-container: #fc8181;
+  --color-on-error-container: #000000;
+
+  --color-background: #ffffff;
+  --color-on-background: #000000;
+
+  /* ---- Typography ---- */
+  --font-display: "BDO Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "PP Neue Montreal", "Inter", system-ui, sans-serif;
+  --font-sans: "PP Neue Montreal", "Inter", system-ui, sans-serif;
+
+  /* ---- Shape (Geometric Warmth) ---- */
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ---- Elevation ---- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 3px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-primary: 0 3px 8px rgba(255, 128, 0, 0.2);
+  --shadow-primary-hover: 0 6px 16px rgba(230, 115, 0, 0.25);
+
+  --container-max: 1280px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface-dim);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.display,
+.headline {
+  font-family: var(--font-display);
+}
+
+@layer components {
+  /* Primary CTA — pill, orange, warm shadow */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 48px;
+    padding: 12px 32px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    box-shadow: var(--shadow-primary);
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-primary-fixed-dim);
+    box-shadow: var(--shadow-primary-hover);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Secondary — transparent with orange border */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 48px;
+    padding: 12px 32px;
+    border-radius: var(--radius-full);
+    background-color: transparent;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border: 2px solid var(--color-primary);
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--color-surface-container);
+    border-color: var(--color-primary-fixed-dim);
+  }
+  .btn-secondary:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  /* Card */
+  .card {
+    background-color: var(--color-surface-dim);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-outline);
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-hover:hover {
+    background-color: var(--color-surface-container);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  /* Input */
+  .input-field {
+    width: 100%;
+    height: 44px;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-outline);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 24px;
+    outline: none;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .input-field::placeholder {
+    color: var(--color-on-surface-variant);
+  }
+  .input-field:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 128, 0, 0.1);
+  }
+
+  /* Badge */
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-tertiary-container);
+    color: var(--color-on-tertiary-container);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 16px;
+  }
+
+  .divider {
+    background-color: var(--color-outline);
+    height: 1px;
+    margin: 24px 0;
+  }
+
+  .container-app {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+  @media (max-width: 768px) {
+    .container-app {
+      padding-inline: 12px;
+    }
+  }
+}
